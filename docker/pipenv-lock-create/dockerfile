@@ -1,0 +1,18 @@
+FROM alpine:3.16
+
+ENV LC_ALL=ja_JP.UTF-8
+ENV LANG=ja_JP.UTF-8
+ENV LANGUAGE=ja_JP:ja
+ENV TZ=Asia/Tokyo
+
+COPY docker/pipenv-lock-create/pipenv-lock-create.sh /sh/pipenv-lock-create.sh
+
+RUN apk add --no-cache --virtual=.build-deps \
+        python3 \
+        py3-pip \
+        mariadb-dev \
+    && pip3 install pipenv --ignore-installed
+
+WORKDIR /var/pipenv-lock-create/
+
+CMD ["bin/sh"]

@@ -1,0 +1,9 @@
+version: '3'
+services:
+    pipenv-lock-create:
+        image: "${DOCKER_USER}/pipenv-lock-create:python3.10"
+        container_name: pipenv-lock-create
+        volumes:
+            - ../..:/var/pipenv-lock-create
+        env_file:
+            -   .env

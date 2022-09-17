@@ -1,0 +1,14 @@
+# ローカル開発用 docker-compose
+# Python interpreter は python ではなく python3 に設定すること
+version: '3'
+services:
+    fast-api-sample:
+        image: "${DOCKER_USER}/fast-api-sample"
+        container_name: fast-api-sample
+        ports:
+            - 8080:8080
+        volumes:
+            - ../fast_api_sample:/var/src/fast_api_sample
+
+        env_file:
+            - .env

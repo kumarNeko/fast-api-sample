@@ -8,6 +8,5 @@ cd "$(dirname $0)" || exit
 
 docker run \
   --rm -it \
-  -p 8024:8024 \
-  --env DJANGO_SETTINGS_MODULE=torico_exam.settings.local \
+  -p 8080:8080 \
   --name=${container_name} ${image_name} "$@"
